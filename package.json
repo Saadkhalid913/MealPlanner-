@@ -1,0 +1,15 @@
+{
+  "name": "diet-planner",
+  "version": "1.0.0",
+  "description": "A meal-planning application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "expres": "0.0.5",
+    "mongoose": "^5.12.8"
+  }
+}
