@@ -17,6 +17,7 @@ router.get("/api/meals", async function(req,res) {
     await MealModel.find().lean().exec(function(err, meal){
       if (!err){
         console.log("Request handled")
+        res.set("Access-Control-Allow-Origin", "*")
         return res.send(JSON.parse(JSON.stringify(meal))) 
       }
     })
@@ -36,7 +37,6 @@ router.post("/api/meals", (req,res) => {
 router.delete("/api/meals/:id", (req,res) => {
   res.send("hello world GET")
 })
-
 
 
 module.exports = router
