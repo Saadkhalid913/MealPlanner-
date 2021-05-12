@@ -1,32 +1,34 @@
 const express = require("express")
 const mongoose = require("mongoose")
 
-const MealSchema = require("./Schemas").Meal
-const ArchivedDaySchema =  require("./Schemas").ArchivedDaySchema
+// setting up app 
+const app = express()
+app.use(express.json())
 
-const Day = mongoose.model("PreviousDays", ArchivedDaySchema)
+//local imports 
+const GetDayId = require("./HelperFunctions").GetCurrentDate
+const MealSchema = require("./Schemas").Meal
+const ArchivedDaySchema =  require("./Schemas").ArchivedDay
+const router = require("./routes")
+
+app.use("/", router)
+
+// models 
+const Day = mongoose.model("Day", ArchivedDaySchema)
 const Meal = mongoose.model("Meal", MealSchema)
 
+// connecting to database 
 mongoose.connect("mongodb://localhost:27017/MealPlanner")
 
 
 
 // testing 
 
-// async function addMeal() {
-//   const meal = new Meal({
-//     name: "meal1",
-//     description: "desc1",
-//     test: {hello: "hello"}
-//   });
 
-//   try{
-//     const result = await meal.save()
-//     console.log(result)
-//   }
-//   catch(err) {
-//     console.log(err)
-//   }
-// }
-// addMeal()
+
+const PORT = 3000
+
+app.listen(PORT, () => {
+  console.log("Listening on port " + PORT)
+})
 
