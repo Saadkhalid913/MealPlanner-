@@ -30,11 +30,18 @@ router.get("/api/meals", async function(req,res) {
 router.get("/api/meals/:id", (req,res) => {
   res.send("hello world GET")
 })
-router.post("/api/meals", (req,res) => {
-  res.send("hello world GET")
+
+router.post("/api/meals", async function(req,res) {
+  const json = req.body
+  console.log("in function")
+  if (!(("name" in json) && ("description" in json)))
+    return res.send("Bad request body")
+  const meal = new MealModel(json);
+  const response = await meal.save()
+  res.send(response)
 })
-router.delete("/api/meals/:id", (req,res) => {
-  
+
+router.delete("/api/meals/:id", (req,res) => {  
 })
 
 
