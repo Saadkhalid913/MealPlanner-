@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  background-color: #5465ff;
+}
+
+.navbar {
+  width: 100%;
+  height: 165px;
+  background-color: #5465ff;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.navbar .page-title {
+  width: max(20%, 150px);
+  height: 60%;
+  background-color: #9bb1ff;
+  margin-left: 2.5%;
+  border-radius: 36px;
+}
+
+.navbar .add-button {
+  border: none;
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  font-size: 275%;
+  outline: none;
+  background-color: #9bb1ff;
+  margin-right: 2.5%;
+}
+
+.navbar .add-button:hover {
+  transform: scale(1.25, 1.25);
+  transition-duration: 150ms;
+}

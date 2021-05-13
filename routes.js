@@ -16,9 +16,8 @@ router.get("/api/meals", async function(req,res) {
   try {
     await MealModel.find().lean().exec(function(err, meal){
       if (!err){
-        console.log("Request handled")
-        res.set("Access-Control-Allow-Origin", "*")
-        return res.send(JSON.parse(JSON.stringify(meal))) 
+        res.set("Access-Control-Allow-Origin", "*") // setting origin headers 
+        return res.send(JSON.parse(JSON.stringify(meal))) // sending JSON object to client 
       }
     })
   }
@@ -35,7 +34,7 @@ router.post("/api/meals", (req,res) => {
   res.send("hello world GET")
 })
 router.delete("/api/meals/:id", (req,res) => {
-  res.send("hello world GET")
+  
 })
 
 
