@@ -45,4 +45,21 @@ router.delete("/api/meals/:id", (req,res) => {
 })
 
 
+// need to review
+router.get("/api/saveddays", async function(req, res) {
+  try {
+    await ArchivedDaySchema.find().lean().exec(function(err, day) {
+      if (!err) {
+        res.set("Access-Control-Allow-Origin", "*");
+        res.send(JSON.parse(JSON.stringify(day)))
+      }
+    })
+  }
+  catch (e) {
+    console.log(e)
+  }
+
+})
+
+
 module.exports = router
