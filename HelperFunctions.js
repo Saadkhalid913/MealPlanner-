@@ -6,5 +6,4 @@ const GetCurrentDate = function() {
   //18758 at 8PM 
 }
 
-module.exports.GetCurrentDate = GetCurrentDate;
-console.log(GetCurrentDate())
+module.exports = GetCurrentDate
