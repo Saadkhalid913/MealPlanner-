@@ -63,23 +63,69 @@ body {
 }
 
 .meal-list li {
-  border: 1px solid black;
-  padding: 1rem;
   margin-bottom: 1.2rem;
   display: flex;
   flex-wrap: wrap;
+  background-color: white;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .meal-list li a {
-  width: 100%;
+  width: 70%;
+  text-decoration: none;
+  color:black;
+  font-size: 2rem;
+  padding:0;
+  margin: 0.5rem;
+  margin-left: 1rem;
 }
+
+@media only screen and (max-width: 768px) {
+  .meal-list li a {
+    width: 60%;
+    color:orange;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .meal-list li a {
+    color:red;
+    width: 50%;
+  }
+}
+
+.meal-list li button {
+  width: max(6rem, 15%);
+  height: 3rem;
+  margin: 0;
+  margin-right: 1.5rem;
+  border-radius: 100px;
+  outline: none;
+  border: 0;
+  font-weight: 600;
+  color:#5465ff;
+  border: 2px solid #5465ff; 
+  background-color:white;
+}
+
 
 .accordion-answer {
   max-height: 0;
   overflow: hidden;
+  visibility: hidden;
+  font-size: 1.25rem;
+
 }
 
 .meal-list li:target .accordion-answer {
-  max-height: 20rem;
-  transition-duration: 1000ms;
+  visibility: visible;
+  margin: 1rem;
+  max-height: 20rem; 
+  transition-duration: 250ms;
+  
+}
+
+.meal-list li:target  button {
+  display: none;
 }
