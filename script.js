@@ -6,10 +6,4 @@ const GetCurrentDate = function() {
   //18758 at 8PM 
 }
 
-async function AddDay() {
-  const meals = await fetch("http://localhost:3000/api/meals")
-  const MealsJson = await meals.json()
-  console.log(MealsJson)
-}
-
 AddDay()
