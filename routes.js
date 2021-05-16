@@ -84,5 +84,36 @@ async function AddDay(res) {
   res.send(result)
 }
 
+router.post("/api/saveddays/current/:id", async function(req,res) {
+  const id = req.params.id;
+  
+  try {
+    const Query = await Day.find({DayId: GetCurrentDate()}); // find the current dat 
+    const CurrentDay = Query[0]
+
+    const targetIndex = CurrentDay.Meals.findIndex(f => (f._id == id)); // find the index of a meal in the array 
+    const arr = CurrentDay.Meals // copy the array 
+    const target = arr[targetIndex] // update the item in the array
+    target.name = "Thismon" 
+
+    const result = await CurrentDay.update({
+      Meals: arr
+    })
+    res.send(result)
+  }
+  catch (e) {
+    console.log(e)
+  }
+  
+  // try {
+  //   await CurrentDay.save()
+  // }
+  // catch (e) {
+  //   console.log(e)
+  // }
+  // console.log(CurrentDay)
+  // res.send(CurrentDay)
+})
+
 
 module.exports = router
