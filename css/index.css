@@ -8,10 +8,6 @@
   list-style: none;
 }
 
-*:target {
-  none
-}
-
 body {
   width: 100%;
   background-color: #5465ff;
@@ -25,14 +21,23 @@ body {
   align-items: center;
   padding: 20px;
   justify-content: space-between;
+  border-bottom: 2px solid white;
+  margin-bottom: 2em;
 }
 
 .navbar .page-title {
-  width: max(20%, 150px);
+  width: max(30%, 6em);
   height: 60%;
-  background-color: #9bb1ff;
+  background-color: transparent;
   margin-left: 2.5%;
   border-radius: 36px;
+  text-align: center;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: white;
 }
 
 .navbar .add-button {
@@ -58,7 +63,7 @@ body {
 .meal-list {
   margin: 0 auto;
   width: 80%;
-  background-color: #beccff;
+  background-color: transparent;
   padding: 10px;
 }
 
@@ -69,14 +74,15 @@ body {
   background-color: white;
   align-items: center;
   justify-content: space-between;
+  padding: 0.5em;
 }
 
 .meal-list li a {
   width: 70%;
   text-decoration: none;
-  color:black;
+  color: black;
   font-size: 2rem;
-  padding:0;
+  padding: 0;
   margin: 0.5rem;
   margin-left: 1rem;
 }
@@ -84,19 +90,19 @@ body {
 @media only screen and (max-width: 768px) {
   .meal-list li a {
     width: 60%;
-    color:orange;
+    color: orange;
   }
 }
 
 @media only screen and (max-width: 540px) {
   .meal-list li a {
-    color:red;
+    color: red;
     width: 50%;
   }
 }
 
 .meal-list li button {
-  width: max(6rem, 15%);
+  width: max(5rem, 12.5%);
   height: 3rem;
   margin: 0;
   margin-right: 1.5rem;
@@ -104,28 +110,36 @@ body {
   outline: none;
   border: 0;
   font-weight: 600;
-  color:#5465ff;
-  border: 2px solid #5465ff; 
-  background-color:white;
+  color: #5465ff;
+  border: 2px solid #5465ff;
+  background-color: white;
 }
-
 
 .accordion-answer {
   max-height: 0;
   overflow: hidden;
   visibility: hidden;
-  font-size: 1.25rem;
-
+  font-size: 1.35rem;
+  width: 100%;
 }
 
 .meal-list li:target .accordion-answer {
   visibility: visible;
   margin: 1rem;
-  max-height: 20rem; 
-  transition-duration: 250ms;
-  
+  max-height: 20rem;
+  transition-duration: 400ms;
 }
 
-.meal-list li:target  button {
+.meal-list li:target button {
   display: none;
+}
+
+.accordion-link button:active {
+  color: white;
+  background-color: #5465ff;
+  transition-duration: 200ms;
+}
+.accordion-link button:hover {
+  transform: scale(1.05, 1.05);
+  transition-duration: 200ms;
 }

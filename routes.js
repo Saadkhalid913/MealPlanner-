@@ -3,6 +3,9 @@ const express = require("express")
 const mongoose = require("mongoose")
 const Models = require("./Schemas")
 
+//importing functions 
+const GetCurrentDay = require("./HelperFunctions")
+const { query } = require("express")
 
 // getting models from schemas module 
 const Meal = Models.Meal
@@ -47,9 +50,25 @@ MealRouter.put("/:id", async (req, res) => {
   res.send(result)
 })
 
+
+//  ---------------------------- Current Day API ----------------------------
+
+DayRouter.get("/current", async  (req, res) => {
+  const CurrentDayID = GetCurrentDay() 
+  const Query = await SavedDay.find({CurrentDayID: CurrentDayID})
+  if (Query.length < 1) {
+    const meals = Meal.find().catch((err) => res.send("Error"))
+    const day = new SavedDay({Meals: meals})
+    const result = await day.save().catch((err) => res.send("There was an error saving"))
+    res.send(result)
+    return
+  }
+  res.send(Query[0])
+})
+
 // ---------------------------- notes ---------------------------- 
-// Finish CRUD requsts for the Meals API 
-// Work on the CURRENT DAY GET CRUD Method for the SavedDay API 
+// Finish CRUD requsts for the Meals API --DONE 
+// Work on the CURRENT DAY GET CRUD Method for the SavedDay API --DONE 
 // do some frontend cleanup 
 
 // exports 

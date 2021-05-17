@@ -1,6 +1,8 @@
 const mongoose = require("mongoose")
 mongoose.connect("mongodb://localhost:27017/MealPlanner")
 
+const GetCurrentDay = require("./HelperFunctions")
+
 const MealSchema = new mongoose.Schema({
   
   name: {
@@ -32,7 +34,12 @@ const SavedDaySchema = new mongoose.Schema({
   meals: {
     type: Array,
     required: true
-  }
+  },
+  
+  CurrentDayID: {
+    type: Number,
+    default: GetCurrentDay
+   }
 })
 
 const Meal = mongoose.model("Meals", MealSchema)
