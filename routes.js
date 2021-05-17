@@ -17,7 +17,7 @@ const MealRouter = express.Router()
 MealRouter.get("/", async (req, res) => {
   const result = await Meal.find().sort("name").catch((e) => {console.log(e)});
   console.log(result)
-  res.send(result)  
+  res.send(result)
 })
 
 MealRouter.post("/", async (req, res) => {
@@ -30,9 +30,21 @@ MealRouter.post("/", async (req, res) => {
     console.log(result)
   }
   catch(e){
-    res.status(400).send(e)
+    res.status(400).send(e)}
   }
+)
 
+MealRouter.delete("/:id", async (req,res) => {
+  const id = req.params.id
+  const result = await Meal.findByIdAndDelete(id).catch((err) => res.send("Invalid id"))
+  res.send(result)
+} )
+
+MealRouter.put("/:id", async (req, res) => {
+  const id = req.params.id
+  const body = req.body
+  const result = await Meal.findByIdAndUpdate(id, body).catch((err) => res.send("Invalid request body"))
+  res.send(result)
 })
 
 // ---------------------------- notes ---------------------------- 
