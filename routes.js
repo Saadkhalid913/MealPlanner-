@@ -23,15 +23,16 @@ MealRouter.get("/", async (req, res) => {
   res.send(result)
 })
 
-MealRouter.post("/", async (req, res) => {
-  const id = req.params.id 
+MealRouter.post("/", async (req, res) => { 
   const body = req.body
   let NewMeal = new Meal(body)
+
   try {
     const result = await NewMeal.save()
     res.status(200).send(result)
     console.log(result)
   }
+
   catch(e){
     res.status(400).send(e)}
   }
@@ -41,7 +42,7 @@ MealRouter.delete("/:id", async (req,res) => {
   const id = req.params.id
   const result = await Meal.findByIdAndDelete(id).catch((err) => res.send("Invalid id"))
   res.send(result)
-} )
+})
 
 MealRouter.put("/:id", async (req, res) => {
   const id = req.params.id
@@ -57,8 +58,9 @@ DayRouter.get("/current", async  (req, res) => {
   const CurrentDayID = GetCurrentDay() 
   const Query = await SavedDay.find({CurrentDayID: CurrentDayID})
   if (Query.length < 1) {
-    const meals = Meal.find().catch((err) => res.send("Error"))
-    const day = new SavedDay({Meals: meals})
+    const meals = await Meal.find().catch((err) => res.send("Error"))
+    console.log(meals)
+    const day = new SavedDay({meals: meals})
     const result = await day.save().catch((err) => res.send("There was an error saving"))
     res.send(result)
     return

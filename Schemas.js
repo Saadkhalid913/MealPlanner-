@@ -32,9 +32,11 @@ const MealSchema = new mongoose.Schema({
 const SavedDaySchema = new mongoose.Schema({
   date: {type: Date, default: Date.now},
   meals: {
-    type: Array,
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: "Meals",
     required: true
   },
+  
   
   CurrentDayID: {
     type: Number,
