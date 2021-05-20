@@ -34,3 +34,10 @@ function AddMeal(Meal) {
 
   document.getElementById("meal-list").appendChild(NewListItem)
 }
+
+async function GetMeals() {
+  const res = await fetch("http://localhost:3000/api/meals")
+  const meals = await res.json()
+  for (let meal of meals)
+    AddMeal(meal)
+}

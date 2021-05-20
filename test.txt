@@ -1,1 +1,10 @@
-[{"Meals":[{"_id":"609dc22f87d29240446b6b73","name":"putted meal","description":"putted meal","__v":0}],"_id":"60a07b039ae20831147dcb23","DayId":18762,"date":"2021-05-16T01:53:07.323Z","__v":0}]
+{
+  "meals":[
+    {"_id":"60a18dc0bb8f9545608c8fcf","name":"This is the edited meal","description":"This is th edited description","__v":0}
+  ],
+
+  "_id":"60a453c13dc36f4e0422c804",
+  "date":"2021-05-18T23:54:41.755Z",
+  "CurrentDayID":18765,
+  "__v":0
+}

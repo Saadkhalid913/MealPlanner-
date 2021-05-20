@@ -57,16 +57,28 @@ MealRouter.put("/:id", async (req, res) => {
 DayRouter.get("/current", async  (req, res) => {
   const CurrentDayID = GetCurrentDay() 
   const Query = await SavedDay.find({CurrentDayID: CurrentDayID})
+                              .populate("meals")
   if (Query.length < 1) {
     const meals = await Meal.find().catch((err) => res.send("Error"))
     console.log(meals)
     const day = new SavedDay({meals: meals})
     const result = await day.save().catch((err) => res.send("There was an error saving"))
-    res.send(result)
+    res.send(await SavedDay.find({CurrentDayID: CurrentDayID})
+                           .populate("meals"))
     return
   }
   res.send(Query[0])
 })
+
+DayRouter.get("/", async (req,res) => {
+  const Query = await SavedDay.find()
+  .populate("meals")
+  .sort("_id")
+  .catch(c => res.send(c))
+  res.send(Query)
+})
+
+
 
 // ---------------------------- notes ---------------------------- 
 // Finish CRUD requsts for the Meals API --DONE 
