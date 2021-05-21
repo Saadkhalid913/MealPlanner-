@@ -8,6 +8,12 @@
     <title>Meal Planner</title>
   </head>
   <body>
+    <div class="sidebar" id="sidebar">
+      <input placeholder="Name of meal" type="text" id="meal-name-input" />
+      <textarea rows="12" placeholder="Description"></textarea>
+      <button>Add</button>
+    </div>
+
     <div class="navbar">
       <div class="page-title">Meal Planner</div>
       <button class="add-button" id="add-button">+</button>
@@ -15,35 +21,7 @@
 
     <div class="main-body">
       <div class="meal-card-holder">
-        <ul id="meal-list" class="meal-list">
-          <li class="accordion-link" id="1">
-            <a href="#1">Meal One</a>
-            <button>Completed</button>
-            <div class="accordion-answer">LLL</div>
-          </li>
-
-          <li class="accordion-link" id="2">
-            <a href="#2">Meal One</a>
-            <button>Completed</button>
-            <div class="accordion-answer">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas,
-              ut excepturi! Omnis sunt ratione perspiciatis, blanditiis pariatur
-              sapiente enim excepturi saepe, assumenda, cupiditate totam alias
-              vel dolor magni quisquam sed!
-            </div>
-          </li>
-
-          <li class="accordion-link" id="3">
-            <a href="#3">Meal One</a>
-            <button>Completed</button>
-            <div class="accordion-answer">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas,
-              ut excepturi! Omnis sunt ratione perspiciatis, blanditiis pariatur
-              sapiente enim excepturi saepe, assumenda, cupiditate totam alias
-              vel dolor magni quisquam sed!
-            </div>
-          </li>
-        </ul>
+        <ul id="meal-list" class="meal-list"></ul>
       </div>
     </div>
   </body>

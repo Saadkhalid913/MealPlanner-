@@ -26,7 +26,6 @@ MealRouter.get("/", async (req, res) => {
 MealRouter.post("/", async (req, res) => { 
   const body = req.body
   let NewMeal = new Meal(body)
-
   try {
     const result = await NewMeal.save()
     res.status(200).send(result)

@@ -13,6 +13,54 @@ body {
   background-color: #5465ff;
 }
 
+.sidebar {
+  width: 25%;
+  height: 100vh;
+  position: fixed;
+  animation-duration: 300ms;
+  transition-duration: 300ms;
+  left: -30%;
+  display: flex;
+  flex-direction: column;
+  background-color: #beccff;
+  padding: 1rem;
+  padding-left: 1.5rem;
+}
+.sidebar button {
+  width: 50%;
+  align-self: center;
+  height: 2.5rem;
+  border-radius: 1.5rem;
+  outline: none;
+  border: none;
+}
+
+.sidebar button:hover {
+  transition-duration: 150ms;
+  transform: scale(1.05, 1.05);
+}
+.sidebar button:active {
+  background-color: #beccff;
+  border: 1px solid black;
+}
+
+.sidebar input {
+  margin: 1rem;
+  height: 3rem;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  outline: none;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+.sidebar textarea {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  outline: none;
+  border: none;
+}
+
 .navbar {
   width: 100%;
   height: 165px;

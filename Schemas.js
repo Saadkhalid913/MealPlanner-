@@ -22,7 +22,7 @@ const MealSchema = new mongoose.Schema({
     required: true,
 
     validate: {
-      validator: function(v) {return v && v.length > 15}
+      validator: function(v) {return v && v.length > 0}
     },
 
     trim: true
