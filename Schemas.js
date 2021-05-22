@@ -26,13 +26,15 @@ const MealSchema = new mongoose.Schema({
     },
 
     trim: true
-  }
+  },
+
+  IsCompleted: {type: Boolean, default: false}
 })
 
 const SavedDaySchema = new mongoose.Schema({
   date: {type: Date, default: Date.now},
   meals: {
-    type: [mongoose.Schema.Types.ObjectId],
+    type: [MealSchema],
     ref: "Meals",
     required: true
   },

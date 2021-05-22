@@ -34,6 +34,7 @@ function AddMeal(Meal) {
   
   const DescriptionDiv = document.createElement("div")
   DescriptionDiv.className = "accordion-answer"
+  DescriptionDiv.innerText = description
 
   NewListItem.appendChild(LinkTag)
   NewListItem.appendChild(CompletedButton)
@@ -70,4 +71,20 @@ async function postmeal(meal) {
   console.log(JsonResponse)
 }
 
+async function UpdateMeal(meal) {
+  const id = meal._id;
+
+}
+
+
+async function DeleteMeal(meal){
+  const id = meal._id;
+} 
+
+function test(){
+  for (let i = 1; i < 5; i++){
+    const meal = {name: "meal" + i, description: "description" + i}
+    postmeal(meal)
+  }
+}
 main()
