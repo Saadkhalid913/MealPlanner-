@@ -6,6 +6,8 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   -duration: 400ms;
   list-style: none;
+  animation-duration: 150ms;
+  transition-duration: 150ms;
 }
 
 body {

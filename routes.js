@@ -22,6 +22,29 @@ MealRouter.get("/", async (req, res) => {
   res.send(result)
 })
 
+MealRouter.get("/current", async (req,res) => {
+  const CurrentDayID = GetCurrentDay()
+  const result = await SavedDay.find({CurrentDayID})
+  const CurrentDay = result[0]
+  res.send(CurrentDay.meals)
+})
+
+MealRouter.put("/current/:id", async (req,res) => {
+  // update meal on current day 
+  const id = req.params.id;
+  const CurrentDayID = GetCurrentDay() 
+  
+  const day = await SavedDay.find({CurrentDayID: CurrentDayID});
+  const dayID = day[0]._id
+  
+  const response = await SavedDay.findById(dayID);
+  const meal = response.meals.find(c => c._id == id) 
+  // toggle completed 
+  meal.IsCompleted = (meal.IsCompleted) ? false : true  
+  response.save()
+  res.send(meal)
+})
+
 MealRouter.post("/", async (req, res) => { 
   const body = req.body
   let NewMeal = new Meal(body)
@@ -74,22 +97,6 @@ DayRouter.get("/", async (req,res) => {
   res.send(Query)
 })
 
-DayRouter.put("/current/:id", async (req,res) => {
-  // update meal on current day 
-  const id = req.params.id;
-  const CurrentDayID = GetCurrentDay() 
-  
-  const day = await SavedDay.find({CurrentDayID: CurrentDayID});
-  const dayID = day[0]._id
-  
-  const response = await SavedDay.findById(dayID);
-  const meal = response.meals.find(c => c._id == id) 
-  // toggle completed 
-  meal.IsCompleted = (meal.IsCompleted) ? false : true  
-
-  response.save()
-  res.send(response)
-})
 
 
 
