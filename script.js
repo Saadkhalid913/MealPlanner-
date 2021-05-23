@@ -55,9 +55,11 @@ function AddMeal(Meal) {
   document.getElementById("meal-list").prepend(NewListItem)
 }
 
+// we need to use this endpoint on startup 
 async function GetMeals() {
-  const res = await fetch("http://localhost:3000/api/meals/current")
-  const meals = await res.json()
+  const res = await fetch("http://localhost:3000/api/saveddays/current")
+  const savedday = await res.json()
+  const meals = savedday.meals
   for (let meal of meals)
     AddMeal(meal)
 }
